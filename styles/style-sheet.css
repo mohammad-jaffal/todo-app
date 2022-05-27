@@ -17,11 +17,13 @@ body {
     justify-content: center;
 }
 
-.lists-container {
+.lists-body-container {
     width: 50%;
     height: 1000px;
     background-color: blanchedalmond;
-    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -34,4 +36,20 @@ body {
 .add-btn {
     align-self: center;
     width: 50px;
+}
+
+.lists-container {
+    background-color: chartreuse;
+    width: 50%;
+    height:1000px;
+    align-self: center;
+    margin-top: 5%;
+}
+.point{
+    width: 100px;
+}
+
+.list-item {
+    background-color: brown;
+    width: 80%;
 }

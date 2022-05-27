@@ -9,13 +9,30 @@
 <body>
 
     <div class="global-container">
-        <div class="lists-container">
+        <div class="lists-body-container">
             <div class="input-container">
                 <input type="text" id="title" placeholder="title">
                 <input type="text" id="description" placeholder="description">
+                <select class="point" id="point">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
                 <button id="add" class="add-btn">+</button>
             </div>
-            <ul></ul>
+            <div class="lists-container" id="lists_container">
+                <!-- <div class="list-item" id="list_item">
+                    <h2>Title</h2>
+                    <p>The description of the todo and some dummy stuff here to make the description go into a new line </p>
+                    <div class="list-options">
+                        <button id="edit" class="edit-btn"><img src="./assets/icons/edit.png"></button>
+                        <button id="fire" class="fire-btn"><img src="./assets/icons/fire.png"></button>
+                        <button id="done" class="done-btn"><img src="./assets/icons/done.png"></button>
+                    </div>
+                </div> -->
+            </div>
         </div>
     </div>
 
