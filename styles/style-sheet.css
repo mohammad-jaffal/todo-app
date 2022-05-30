@@ -19,7 +19,7 @@ body {
 
 .lists-body-container {
     width: 50%;
-    height: 1000px;
+    /* height: 1000px; */
     background-color: blanchedalmond;
     justify-content: center;
     display: flex;
@@ -39,17 +39,30 @@ body {
 }
 
 .lists-container {
-    background-color: chartreuse;
+    /* background-color: chartreuse; */
+    border-radius: 10px;
     width: 50%;
-    height:1000px;
     align-self: center;
     margin-top: 5%;
+    /* padding-bottom: 400px; */
 }
 .point{
     width: 100px;
 }
 
 .list-item {
-    background-color: brown;
+    background-color: rgba(213, 216, 27, 0.623);
+    border-radius: 10px;
+    padding: 10px;
     width: 80%;
+    margin-bottom: 20px;
 }
+
+.list-item-done {
+    background-color: rgb(114, 107, 107);
+    padding: 10px;
+    border-radius: 10px;
+    width: 80%;
+    margin-bottom: 20px;
+}
+
