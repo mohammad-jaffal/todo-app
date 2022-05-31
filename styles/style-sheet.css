@@ -65,3 +65,12 @@ body {
     margin-bottom: 20px;
 }
 
+
+.edit-container {
+    padding-top: 5%;
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    background-color: aqua;
+    width: 50%;
+}

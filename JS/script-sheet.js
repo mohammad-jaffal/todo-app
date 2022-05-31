@@ -22,7 +22,7 @@ $(document).ready(function () {
         console.log(lists_map);
     }
 
-    
+
 
 
     var lists_keys = Object.keys(lists_map)
@@ -30,7 +30,7 @@ $(document).ready(function () {
 
     var lists_points = {}
 
-    for( var i = 0 ; i < lists_keys.length ; i++ ){
+    for (var i = 0; i < lists_keys.length; i++) {
         lists_points[lists_keys[i]] = lists_map[lists_keys[i]]['point']
     }
 
@@ -41,7 +41,7 @@ $(document).ready(function () {
         return lists_points[x] - lists_points[y];
     });
 
-    console.log("2",lists_keys)
+    console.log("2", lists_keys)
 
 
 
@@ -57,14 +57,14 @@ $(document).ready(function () {
 
 
 
-    for( var j = 0 ; j < lists_keys.length ; j++ ){
+    for (var j = 0; j < lists_keys.length; j++) {
         var key = lists_keys[j]
 
         console.log('populating ' + lists_map[key].title);
 
         var c = "list-item"
-        if(lists_map[key].done)
-        c = "list-item-done"
+        if (lists_map[key].done)
+            c = "list-item-done"
 
         const card = document.createElement('div');
         card.id = `list_item${key}`;
@@ -81,16 +81,18 @@ $(document).ready(function () {
         $('#lists_container').prepend(card);
 
 
-        var edit_btns = document.getElementsByClassName("edit-btn");
+        var edit_btns = $(".edit-btn");
         for (const element of edit_btns) { // You can use `let` instead of `const` if you like
             element.addEventListener("click", function () {
+                localStorage.setItem("id_to_edit", element.id)
+                $(".edit-container").css("display", "flex");
                 console.log(element.id)
             })
         }
 
 
 
-        var fire_btns = document.getElementsByClassName("fire-btn");
+        var fire_btns = $(".fire-btn");
         for (const element of fire_btns) { // You can use `let` instead of `const` if you like
             element.addEventListener("click", function () {
                 console.log(lists_map[element.id])
@@ -101,17 +103,37 @@ $(document).ready(function () {
         }
 
 
-        var done_btns = document.getElementsByClassName("done-btn");
+        var done_btns = $(".done-btn");
         for (const element of done_btns) { // You can use `let` instead of `const` if you like
             element.addEventListener("click", function () {
                 console.log(element.id)
-                $(`#list_item${element.id}`).css("background-color","grey")
+                $(`#list_item${element.id}`).css("background-color", "grey")
                 lists_map[element.id].done = true
                 localStorage.setItem('todoLists', JSON.stringify(lists_map));
                 location.reload()
             })
         }
     }
+
+
+
+    $('#submit_edit').click(function () {
+
+        if ($('#edit_title').val() == '' || $('#edit_description').val() == '') {
+            alert('fill all')
+        }
+        else {
+            var id_to_edit = localStorage.getItem("id_to_edit")
+            lists_map[id_to_edit].title = $('#edit_title').val()
+            lists_map[id_to_edit].description = $('#edit_description').val()
+            lists_map[id_to_edit].point = $('#edit_point').val()
+            localStorage.setItem('todoLists', JSON.stringify(lists_map));
+            location.reload()
+        }
+    })
+
+
+
 
 
     $('#add').click(function () {
