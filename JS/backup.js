@@ -25,40 +25,14 @@ $(document).ready(function () {
     
 
 
-    var lists_keys = Object.keys(lists_map)
-    console.log(lists_keys)
 
-    var lists_points = {}
-
-    for( var i = 0 ; i < lists_keys.length ; i++ ){
-        lists_points[lists_keys[i]] = lists_map[lists_keys[i]]['point']
-    }
-
-    console.log(lists_points)
-
-
-    lists_keys.sort(function (x, y) {
-        return lists_points[x] - lists_points[y];
-    });
-
-    console.log("2",lists_keys)
+  
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-    for( var j = 0 ; j < lists_keys.length ; j++ ){
-        var key = lists_keys[j]
+    for (var key in lists_map) {
 
         console.log('populating ' + lists_map[key].title);
 
