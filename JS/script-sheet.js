@@ -12,21 +12,21 @@ $(document).ready(function () {
         }
     }
 
+
+    // get todos from local storge
     var lists_map = JSON.parse(localStorage.getItem('todoLists'));
-
-
     if (!lists_map) {
-        console.log("lists_map is empty");
         lists_map = {};
-    } else {
-        console.log(lists_map);
-    }
+    } 
 
 
 
 
+
+
+
+// sort keys according to points 
     var lists_keys = Object.keys(lists_map)
-    console.log(lists_keys)
 
     var lists_points = {}
 
@@ -34,14 +34,12 @@ $(document).ready(function () {
         lists_points[lists_keys[i]] = lists_map[lists_keys[i]]['point']
     }
 
-    console.log(lists_points)
 
 
     lists_keys.sort(function (x, y) {
         return lists_points[x] - lists_points[y];
     });
 
-    console.log("2", lists_keys)
 
 
 
@@ -49,18 +47,10 @@ $(document).ready(function () {
 
 
 
-
-
-
-
-
-
-
-
+    // creating todos
     for (var j = 0; j < lists_keys.length; j++) {
         var key = lists_keys[j]
 
-        console.log('populating ' + lists_map[key].title);
 
         var c = "list-item"
         if (lists_map[key].done)
@@ -82,20 +72,18 @@ $(document).ready(function () {
 
 
         var edit_btns = $(".edit-btn");
-        for (const element of edit_btns) { // You can use `let` instead of `const` if you like
+        for (const element of edit_btns) {
             element.addEventListener("click", function () {
                 localStorage.setItem("id_to_edit", element.id)
                 $(".edit-container").css("display", "flex");
-                console.log(element.id)
             })
         }
 
 
 
         var fire_btns = $(".fire-btn");
-        for (const element of fire_btns) { // You can use `let` instead of `const` if you like
+        for (const element of fire_btns) {
             element.addEventListener("click", function () {
-                console.log(lists_map[element.id])
                 delete lists_map[element.id]
                 localStorage.setItem('todoLists', JSON.stringify(lists_map));
                 location.reload()
@@ -104,9 +92,8 @@ $(document).ready(function () {
 
 
         var done_btns = $(".done-btn");
-        for (const element of done_btns) { // You can use `let` instead of `const` if you like
+        for (const element of done_btns) { 
             element.addEventListener("click", function () {
-                console.log(element.id)
                 $(`#list_item${element.id}`).css("background-color", "grey")
                 lists_map[element.id].done = true
                 localStorage.setItem('todoLists', JSON.stringify(lists_map));
@@ -117,6 +104,7 @@ $(document).ready(function () {
 
 
 
+    // submit edit for a todo
     $('#submit_edit').click(function () {
 
         if ($('#edit_title').val() == '' || $('#edit_description').val() == '') {
@@ -135,14 +123,11 @@ $(document).ready(function () {
 
 
 
-
+    // add a todo
     $('#add').click(function () {
-
 
         var title = $('#title').val();
         var description = $('#description').val();
-
-
 
         if (title == "" || description == "") { }
 
@@ -155,8 +140,6 @@ $(document).ready(function () {
             var temp_id = todo.id
 
             lists_map[temp_id] = todo;
-            console.log(lists_map)
-
             localStorage.setItem('todoLists', JSON.stringify(lists_map));
 
 
@@ -173,7 +156,6 @@ $(document).ready(function () {
 
 
         }
-        console.log("reload")
 
         location.reload()
 
