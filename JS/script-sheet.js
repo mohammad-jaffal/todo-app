@@ -129,7 +129,9 @@ $(document).ready(function () {
         var title = $('#title').val();
         var description = $('#description').val();
 
-        if (title == "" || description == "") { }
+        if (title == "" || description == "") {
+            alert("fill all")
+        }
 
         else {
             // generating random unique id
